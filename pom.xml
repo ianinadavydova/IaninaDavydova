@@ -13,7 +13,6 @@
         <maven.surefire.plugin.version>3.0.0-M3</maven.surefire.plugin.version>
     </properties>
 
-    <!-- TODO Good practice if suites xml files will have more clear names -->
     <profiles>
         <profile>
             <id>add-substract-tests</id>
@@ -21,7 +20,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>src/test/resources/Suite1.xml</suite.xml>
+                <suite.xml>src/test/resources/AdditionSubstractionTestSuite.xml</suite.xml>
             </properties>
         </profile>
         <profile>
@@ -30,7 +29,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>src/test/resources/Suite2.xml</suite.xml>
+                <suite.xml>src/test/resources/MultiplicationDivisionTestSuite.xml</suite.xml>
             </properties>
         </profile>
         <profile>
@@ -39,7 +38,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>src/test/resources/Suite3.xml</suite.xml>
+                <suite.xml>src/test/resources/AllOperationsTestSuite.xml</suite.xml>
             </properties>
         </profile>
     </profiles>

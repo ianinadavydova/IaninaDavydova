@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite3">
+<suite name="AllOPerationsTestSuite">
     <test name="all-tests">
         <packages>
             <package name="hw1"/>
