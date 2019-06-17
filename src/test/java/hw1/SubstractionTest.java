@@ -8,8 +8,10 @@ import static org.testng.Assert.assertEquals;
 
 public class SubstractionTest {
 
+    // TODO It will be better extract this field and BeforeHook to some base class
     private Calculator calc;
 
+    // TODO It will be better used BeforeMethod Hook here
     @BeforeSuite
     public void createCalc() {
         calc = new Calculator();

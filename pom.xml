@@ -13,6 +13,7 @@
         <maven.surefire.plugin.version>3.0.0-M3</maven.surefire.plugin.version>
     </properties>
 
+    <!-- TODO Good practice if suites xml files will have more clear names -->
     <profiles>
         <profile>
             <id>add-substract-tests</id>
