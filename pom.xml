@@ -41,6 +41,15 @@
                 <suite.xml>src/test/resources/AllOperationsTestSuite.xml</suite.xml>
             </properties>
         </profile>
+        <profile>
+            <id>hw2-tests</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw2TestSuite.xml</suite.xml>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
@@ -55,6 +64,11 @@
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/src/test/resources/calculator-1.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
         </dependency>
     </dependencies>
 
