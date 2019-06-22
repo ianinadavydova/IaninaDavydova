@@ -37,13 +37,16 @@ public class Exercise1 extends BaseTestHw2 {
 
     private void pageContentTest() {
 
-        List<String> expectedNavBarItemsTexts = Arrays.asList("HOME", "CONTACT FORMd", "SERVICE", "METALS & COLORS");
+        List<String> expectedNavBarItemsTexts = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
         List<WebElement> actualNavBarItems = driver.findElements(By.xpath("//ul[@class='uui-navigation nav navbar-nav m-l8']/li"));
         assertEquals(actualNavBarItems.size(), 4);
 
-        List<String> actualNavBarItemsTexts = actualNavBarItems.stream().map(WebElement::getText).collect(Collectors.toList());
+        //List<String> actualNavBarItemsTexts = actualNavBarItems.stream().map(WebElement::getText).collect(Collectors.toList());
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(actualNavBarItemsTexts, expectedNavBarItemsTexts);
+        for (int i = 0; i < 4; i++) {
+            softAssert.assertEquals(actualNavBarItems.get(i).getText(), expectedNavBarItemsTexts.get(i));
+        }
+        softAssert.assertAll();
     }
 
 }
