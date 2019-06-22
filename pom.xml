@@ -10,14 +10,16 @@
     <properties>
         <java.version>1.8</java.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-        <maven.surefire.plugin.version>3.0.0-M3</maven.surefire.plugin.version>
+        <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
+        <testng.version>6.14.3</testng.version>
+        <selenium.version>3.141.59</selenium.version>
     </properties>
 
     <profiles>
         <profile>
             <id>add-substract-tests</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.xml>src/test/resources/AdditionSubstractionTestSuite.xml</suite.xml>
@@ -44,7 +46,7 @@
         <profile>
             <id>hw2-tests</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <suite.xml>src/test/resources/hw2TestSuite.xml</suite.xml>
@@ -56,7 +58,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.14.3</version>
+            <version>${testng.version}</version>
         </dependency>
         <dependency>
             <groupId>com.epam.training.center.calculator</groupId>
@@ -64,11 +66,12 @@
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/src/test/resources/calculator-1.0.jar</systemPath>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
+            <version>${selenium.version}</version>
         </dependency>
     </dependencies>
 
@@ -81,6 +84,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
