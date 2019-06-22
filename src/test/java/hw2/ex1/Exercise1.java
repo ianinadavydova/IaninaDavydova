@@ -8,12 +8,11 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.*;
 
 public class Exercise1 extends BaseTestHw2 {
+
     @Test
     public void exercise1Test() {
         // Step #1 Open test site by URL, test site is opened
@@ -79,17 +78,48 @@ public class Exercise1 extends BaseTestHw2 {
         // Step #9 Assert a text of the main headers
         List<String> expectedMainHeadersTexts = Arrays.asList(
                 "EPAM framework Wishes…",
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n" +
-                        "                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\n" +
-                        "                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in\n" +
-                        "                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod " +
+                        "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud " +
+                        "exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in " +
+                        "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
         );
 
-        List<WebElement> actualMainHeadersTexts = driver.findElements(By.cssSelector(".benefit-icon"));
+        List<WebElement> actualMainHeadersTexts = driver.findElements(By.cssSelector("[name='main-title']"));
+        actualMainHeadersTexts.add(driver.findElement(By.cssSelector("[name='jdi-text']")));
+        for (int i = 0; i < 2; i++) {
+            checkElementIsDisplayed(actualMainHeadersTexts.get(i));
+            softAssert.assertEquals(actualMainHeadersTexts.get(i).getText(), expectedMainHeadersTexts.get(i).toUpperCase());
+        }
 
+        // Step #10 Assert that there is the iframe in the center of page
+        checkElementIsDisplayed(driver.findElement(By.id("iframe")));
 
+        // Step #11 Switch to the iframe and check that there is Epam logo in the left top conner of iframe
+        driver.switchTo().frame("iframe");
+        checkElementIsDisplayed(driver.findElement(By.id("epam_logo")));
+
+        // Step #12 Switch to original window back
+        driver.switchTo().defaultContent();
+
+        // Step #13 Assert a text of the sub header
+        checkElementIsDisplayed(driver.findElement(By.cssSelector("h3 a")));
+        assertEquals(driver.findElement(By.cssSelector("h3 a")).getText(), "JDI GITHUB");
+
+        // Step #14 Assert that JDI GITHUB is a link and has a proper URL
+        checkElementIsDisplayed(driver.findElement(By.cssSelector("h3 a")));
+        assertEquals(driver.findElement(By.cssSelector("h3 a")).getAttribute("href"), "https://github.com/epam/JDI");
+
+        // Step #15 Assert that there is Left Section
+        checkElementIsDisplayed(driver.findElement(By.id("mCSB_1")));
+
+        //Assert that there is Footer
+        checkElementIsDisplayed(driver.findElement(By.tagName("footer")));
 
         softAssert.assertAll();
+    }
+
+    private void checkElementIsDisplayed(WebElement webElement) {
+        assertTrue(webElement.isDisplayed());
     }
 
 }
