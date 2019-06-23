@@ -36,6 +36,7 @@ Exercise1 extends BaseTestHw2 {
 
         //Step #6 Assert that there are 4 items on the header section are displayed and they have proper texts
 
+        // TODO It could be made as constant
         List<String> expectedNavBarItemsTexts = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
         List<WebElement> actualNavBarItems = driver.findElements(By.cssSelector(".nav>li>a"));
         checkElementsAreDisplayed(actualNavBarItems);
@@ -53,6 +54,7 @@ Exercise1 extends BaseTestHw2 {
         checkElementsAreDisplayed(actualImageTexts);
 
         //Step #8 ...and they have proper text
+        // TODO It could be made as constant
         List<String> expectedImageTexts = Arrays.asList(
                 "To include good practices\nand ideas from successful\nEPAM project",
                 "To be flexible and\ncustomizable",
@@ -67,6 +69,7 @@ Exercise1 extends BaseTestHw2 {
 
         WebElement jdiText = driver.findElement(By.cssSelector("[name='jdi-text']"));
         checkElementIsDisplayed(jdiText);
+        // TODO It could be made as constant
         String expectedJdiText =
                 "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
                         "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. " +
