@@ -9,6 +9,7 @@ import org.testng.asserts.SoftAssert;
 
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.testng.Assert.*;
 
@@ -67,13 +68,13 @@ public class BaseTestHw2 {
     }
 
     protected void compareLists(List<WebElement> actual, List<String> expected) {
-        softAssert.assertEquals(actual.size(), expected.size());
+        assertEquals(actual.size(), expected.size());
         for (int i = 0; i != actual.size(); ++i) {
             softAssert.assertEquals(actual.get(i).getText(), expected.get(i));
         }
     }
     protected void compareQuantity(List<WebElement> actual, int expectedQuantity) {
-        softAssert.assertEquals(actual.size(), expectedQuantity);
+        assertEquals(actual.size(), expectedQuantity);
     }
 
     protected void selectElement(WebElement element) {
@@ -86,5 +87,14 @@ public class BaseTestHw2 {
         assertTrue(element.isSelected());
         element.click();
         assertFalse(element.isSelected());
+    }
+
+    protected List<String> getLogRecords() {
+        List<WebElement> logRecords = driver.findElements(By.cssSelector(".panel-body-list.logs > li"));
+        return logRecords.stream().map(logRecord -> logRecord.getText()).collect(Collectors.toList());
+    }
+
+    protected String getLastLogRecord() {
+        return driver.findElement(By.cssSelector(".panel-body-list.logs > li")).getText();
     }
 }

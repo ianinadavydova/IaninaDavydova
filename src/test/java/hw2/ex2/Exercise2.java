@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class Exercise2 extends BaseTestHw2 {
     }
 
     private void pageContentActionsTest() {
-        //Step #5 Click on "Service" subcategory in the header and check that drop down contains options
+            // Step #5 Click on "Service" subcategory in the header and check that drop down contains options
 
         List<String> expectedServiceDropdownItems = Arrays.asList(
                 "Support", "Dates", "Complex Table", "Simple Table", "Tables With Pages", "Different Elements");
@@ -48,7 +49,7 @@ public class Exercise2 extends BaseTestHw2 {
 
         //Step #7 Open through the header menu Service -> Different Elements Page
         headerService.click();
-        driver.findElement(By.xpath("//ul[@class='dropdown-menu']//li//a[contains(.,'DIFFERENT ELEMENTS')]")).click();
+        driver.findElement(By.xpath("//ul[@class='dropdown-menu']//li//a[@href='different-elements.html']")).click();
         assertEquals(driver.getTitle(), "Different Elements");
 
         // Step #8 Check interface on Different elements page, it contains all needed elements
@@ -69,25 +70,29 @@ public class Exercise2 extends BaseTestHw2 {
         checkElementIsDisplayed(driver.findElement(By.name("navigation-sidebar")));
 
         //Step #11 Select checkboxes
-        WebElement waterCheckbox = driver.findElement(By.xpath("//label[contains(.,'Water')]"));
-        WebElement windCheckbox = driver.findElement(By.xpath("//label[contains(.,'Water')]"));
+        WebElement waterCheckbox = driver.findElement(By.xpath("//label[contains(.,'Water')]//input"));
+        WebElement windCheckbox = driver.findElement(By.xpath("//label[contains(.,'Wind')]//input"));
         selectElement(waterCheckbox);
         selectElement(windCheckbox);
 
         //Step #12 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
 
+        assertTrue(getLogRecords().get(0).endsWith("Wind: condition changed to true"));
+        assertTrue(getLogRecords().get(1).endsWith("Water: condition changed to true"));
 
         //Step #13 Select radio
-        WebElement selenRadioButton = driver.findElement(By.xpath("//label[contains(.,'Selen')]"));
+        WebElement selenRadioButton = driver.findElement(By.xpath("//label[contains(.,'Selen')]//input"));
         selectElement(selenRadioButton);
 
         // Step #14 Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton.
+        assertTrue(getLastLogRecord().contains("metal: value changed to Selen"));
 
         //Step #15 Select in dropdown
         colorsDropDown.click();
-        driver.findElement(By.xpath("//option[contains(.,'Yellow')]"));
+        driver.findElement(By.xpath("//option[contains(.,'Yellow')]")).click();
 
         //Step #16 Assert that for dropdown there is a log row and value is corresponded to the selected value.
+        assertTrue(getLastLogRecord().contains("Colors: value changed to Yellow"));
 
         // Step #17 Unselect and assert checkboxes
 
@@ -95,6 +100,9 @@ public class Exercise2 extends BaseTestHw2 {
         deselectElement(windCheckbox);
 
         // Step #18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
+
+        assertTrue(getLogRecords().get(0).endsWith("Wind: condition changed to false"));
+        assertTrue(getLogRecords().get(1).endsWith("Water: condition changed to false"));
 
         softAssert.assertAll();
     }
