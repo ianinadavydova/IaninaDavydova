@@ -10,8 +10,25 @@ import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
-public class
-Exercise1 extends BaseTestHw2 {
+public class Exercise1 extends BaseTestHw2 {
+
+    // TODO It could be made as constant - FIXED
+    private final static List<String> EXPECTED_NAV_BAR_ITEMS_TEXTS = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
+
+    // TODO It could be made as constant - FIXED
+    private final static List<String> EXPECTED_IMAGE_TEXTS = Arrays.asList(
+            "To include good practices\nand ideas from successful\nEPAM project",
+            "To be flexible and\ncustomizable",
+            "To be multiplatform",
+            "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
+
+    // TODO It could be made as constant - FIXED
+    private final static String EXPECTED_JDI_TEXT =
+            "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
+                    "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. " +
+                    "UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT "+
+                    "ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT "+
+                    "ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
 
     @Test
     public void exercise1Test() {
@@ -36,11 +53,9 @@ Exercise1 extends BaseTestHw2 {
 
         //Step #6 Assert that there are 4 items on the header section are displayed and they have proper texts
 
-        // TODO It could be made as constant
-        List<String> expectedNavBarItemsTexts = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
         List<WebElement> actualNavBarItems = driver.findElements(By.cssSelector(".nav>li>a"));
         checkElementsAreDisplayed(actualNavBarItems);
-        compareLists(actualNavBarItems, expectedNavBarItemsTexts);
+        compareLists(actualNavBarItems, EXPECTED_NAV_BAR_ITEMS_TEXTS);
 
         //Step #7 Assert that there are 4 images on the Index Page...
         List<WebElement> images = driver.findElements(By.cssSelector(".benefit-icon"));
@@ -54,13 +69,7 @@ Exercise1 extends BaseTestHw2 {
         checkElementsAreDisplayed(actualImageTexts);
 
         //Step #8 ...and they have proper text
-        // TODO It could be made as constant
-        List<String> expectedImageTexts = Arrays.asList(
-                "To include good practices\nand ideas from successful\nEPAM project",
-                "To be flexible and\ncustomizable",
-                "To be multiplatform",
-                "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
-        compareLists(actualImageTexts, expectedImageTexts);
+        compareLists(actualImageTexts, EXPECTED_IMAGE_TEXTS);
 
         // Step #9 Assert a text of the main headers
         WebElement actualMainHeaderText = driver.findElement(By.cssSelector("[name='main-title']"));
@@ -69,14 +78,7 @@ Exercise1 extends BaseTestHw2 {
 
         WebElement jdiText = driver.findElement(By.cssSelector("[name='jdi-text']"));
         checkElementIsDisplayed(jdiText);
-        // TODO It could be made as constant
-        String expectedJdiText =
-                "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
-                        "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. " +
-                        "UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT "+
-                        "ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT "+
-                        "ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
-        softAssert.assertEquals(jdiText.getText(), expectedJdiText);
+        softAssert.assertEquals(jdiText.getText(), EXPECTED_JDI_TEXT);
 
         // Step #10 Assert that there is the iframe in the center of page
         checkElementIsDisplayed(driver.findElement(By.id("iframe")));

@@ -80,23 +80,15 @@ public class BaseTestHw2 {
     }
 
     protected void selectElement(WebElement element) {
-        // TODO Is is required check, that element is not selected?
-        assertFalse(element.isSelected());
+        // TODO Is is required check, that element is not selected? - Not required, deleted.
         element.click();
         assertTrue(element.isSelected());
     }
 
     protected void deselectElement(WebElement element) {
-        // TODO Is is required check, that element is selected?
-        assertTrue(element.isSelected());
+        // TODO Is is required check, that element is selected? - Not required, deleted.
         element.click();
         assertFalse(element.isSelected());
-    }
-
-    protected List<String> getLogRecords() {
-        List<WebElement> logRecords = driver.findElements(By.cssSelector(".panel-body-list.logs > li"));
-        // TODO logRecord -> logRecord.getText() could be replaced to the WebElement::getText
-        return logRecords.stream().map(logRecord -> logRecord.getText()).collect(Collectors.toList());
     }
 
     protected String getLastLogRecord() {
