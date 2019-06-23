@@ -33,6 +33,7 @@ public class Exercise2 extends BaseTestHw2 {
     private void pageContentActionsTest() {
             // Step #5 Click on "Service" subcategory in the header and check that drop down contains options
 
+        // TODO It could be made as constant
         List<String> expectedServiceDropdownItems = Arrays.asList(
                 "Support", "Dates", "Complex Table", "Simple Table", "Tables With Pages", "Different Elements");
 
@@ -70,6 +71,8 @@ public class Exercise2 extends BaseTestHw2 {
         checkElementIsDisplayed(driver.findElement(By.name("navigation-sidebar")));
 
         //Step #11 Select checkboxes
+        // TODO Is it possible make name of the checkbox, radiobutton as input parameter?
+        // TODO Name should be not part of the locator in the test
         WebElement waterCheckbox = driver.findElement(By.xpath("//label[contains(.,'Water')]//input"));
         WebElement windCheckbox = driver.findElement(By.xpath("//label[contains(.,'Wind')]//input"));
         selectElement(waterCheckbox);
@@ -78,6 +81,7 @@ public class Exercise2 extends BaseTestHw2 {
         //Step #12 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
 
         List<String> logRecords = getLogRecords();
+        // TODO It will be better if you not use index for the collection
         assertTrue(logRecords.get(0).endsWith("Wind: condition changed to true"));
         assertTrue(logRecords.get(1).endsWith("Water: condition changed to true"));
 
@@ -89,6 +93,7 @@ public class Exercise2 extends BaseTestHw2 {
         assertTrue(getLastLogRecord().contains("metal: value changed to Selen"));
 
         //Step #15 Select in dropdown
+        // TODO Why do you not use Select element for the Dropdown?
         colorsDropDown.click();
         driver.findElement(By.xpath("//option[contains(.,'Yellow')]")).click();
 
