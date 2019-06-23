@@ -73,8 +73,9 @@ public class BaseTestHw2 {
             softAssert.assertEquals(actual.get(i).getText(), expected.get(i));
         }
     }
-    protected void compareQuantity(List<WebElement> actual, int expectedQuantity) {
-        assertEquals(actual.size(), expectedQuantity);
+
+    protected void checkCount(List<WebElement> actual, int expectedCount) {
+        assertEquals(actual.size(), expectedCount);
     }
 
     protected void selectElement(WebElement element) {

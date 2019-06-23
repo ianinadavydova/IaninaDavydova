@@ -58,10 +58,10 @@ public class Exercise2 extends BaseTestHw2 {
         List<WebElement> actualButtonsList = driver.findElements(By.cssSelector(".uui-button[value]"));
         WebElement colorsDropDown = driver.findElement(By.cssSelector(".colors .uui-form-element"));
 
-        compareQuantity(actualCheckBoxesList, 4);
-        compareQuantity(actualRadioButtonsList, 4);
+        checkCount(actualCheckBoxesList, 4);
+        checkCount(actualRadioButtonsList, 4);
         checkElementIsDisplayed(colorsDropDown);
-        compareQuantity(actualButtonsList, 2);
+        checkCount(actualButtonsList, 2);
 
         //Step #9 Assert that there is Right Section
         checkElementIsDisplayed(driver.findElement(By.name("log-sidebar")));
@@ -77,8 +77,9 @@ public class Exercise2 extends BaseTestHw2 {
 
         //Step #12 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
 
-        assertTrue(getLogRecords().get(0).endsWith("Wind: condition changed to true"));
-        assertTrue(getLogRecords().get(1).endsWith("Water: condition changed to true"));
+        List<String> logRecords = getLogRecords();
+        assertTrue(logRecords.get(0).endsWith("Wind: condition changed to true"));
+        assertTrue(logRecords.get(1).endsWith("Water: condition changed to true"));
 
         //Step #13 Select radio
         WebElement selenRadioButton = driver.findElement(By.xpath("//label[contains(.,'Selen')]//input"));
@@ -101,8 +102,9 @@ public class Exercise2 extends BaseTestHw2 {
 
         // Step #18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
 
-        assertTrue(getLogRecords().get(0).endsWith("Wind: condition changed to false"));
-        assertTrue(getLogRecords().get(1).endsWith("Water: condition changed to false"));
+        logRecords = getLogRecords();
+        assertTrue(logRecords.get(0).endsWith("Wind: condition changed to false"));
+        assertTrue(logRecords.get(1).endsWith("Water: condition changed to false"));
 
         softAssert.assertAll();
     }
