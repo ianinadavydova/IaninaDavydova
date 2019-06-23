@@ -2,16 +2,20 @@ package hw2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 
 import java.nio.file.Paths;
+import java.util.List;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 public class BaseTestHw2 {
 
     protected WebDriver driver;
+    protected SoftAssert softAssert;
 
     @BeforeSuite
     public void setUpDriverPath() {
@@ -19,14 +23,19 @@ public class BaseTestHw2 {
                 Paths.get("src/test/resources/driver/chromedriver.exe").toAbsolutePath().toString());
     }
 
-    @BeforeTest
+    @BeforeClass
     public void setUp() {
         driver = new ChromeDriver();
         driver.get("https://epam.github.io/JDI/");
         driver.manage().window().maximize();
     }
 
-    @AfterTest
+    @BeforeMethod
+    public void initSoftAssert() {
+        softAssert = new SoftAssert();
+    }
+
+    @AfterClass
     public void teatDown() {
         driver.close();
     }
@@ -45,5 +54,37 @@ public class BaseTestHw2 {
         driver.findElement(By.cssSelector("#password")).sendKeys(password);
         driver.findElement(By.xpath("//button[@id='login-button']")).click();
         assertEquals(driver.findElement(By.id("user-name")).getText(), userName.toUpperCase());
+    }
+
+    protected void checkElementIsDisplayed(WebElement webElement) {
+        softAssert.assertTrue(webElement.isDisplayed());
+    }
+
+    protected void checkElementsAreDisplayed(List<WebElement> webElements) {
+        for (WebElement element : webElements) {
+            checkElementIsDisplayed(element);
+        }
+    }
+
+    protected void compareLists(List<WebElement> actual, List<String> expected) {
+        softAssert.assertEquals(actual.size(), expected.size());
+        for (int i = 0; i != actual.size(); ++i) {
+            softAssert.assertEquals(actual.get(i).getText(), expected.get(i));
+        }
+    }
+    protected void compareQuantity(List<WebElement> actual, int expectedQuantity) {
+        softAssert.assertEquals(actual.size(), expectedQuantity);
+    }
+
+    protected void selectElement(WebElement element) {
+        assertFalse(element.isSelected());
+        element.click();
+        assertTrue(element.isSelected());
+    }
+
+    protected void deselectElement(WebElement element) {
+        assertTrue(element.isSelected());
+        element.click();
+        assertFalse(element.isSelected());
     }
 }

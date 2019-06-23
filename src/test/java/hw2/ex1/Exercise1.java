@@ -4,14 +4,14 @@ import hw2.BaseTestHw2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
-public class Exercise1 extends BaseTestHw2 {
+public class
+Exercise1 extends BaseTestHw2 {
 
     @Test
     public void exercise1Test() {
@@ -28,40 +28,29 @@ public class Exercise1 extends BaseTestHw2 {
         // Step #5 Assert Browser title
         browserTitleCheck("Home Page");
 
-        /*Step #6
-         Assert that there are 4 items on the header section are displayed
-         and they have proper texts
-         */
+        //Step #6-17
         pageContentTest();
     }
 
     private void pageContentTest() {
 
-        //Step #6 Assert that there are 4 items on the header section are displayed...
+        //Step #6 Assert that there are 4 items on the header section are displayed and they have proper texts
 
         List<String> expectedNavBarItemsTexts = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
         List<WebElement> actualNavBarItems = driver.findElements(By.cssSelector(".nav>li>a"));
-        assertEquals(actualNavBarItems.size(), 4);
-
-        //Step #6 ...and they have proper texts
-        SoftAssert softAssert = new SoftAssert();
-
-        for (int i = 0; i < 4; i++) {
-            softAssert.assertEquals(actualNavBarItems.get(i).getText(), expectedNavBarItemsTexts.get(i));
-        }
+        checkElementsAreDisplayed(actualNavBarItems);
+        compareLists(actualNavBarItems, expectedNavBarItemsTexts);
 
         //Step #7 Assert that there are 4 images on the Index Page...
         List<WebElement> images = driver.findElements(By.cssSelector(".benefit-icon"));
         assertEquals(images.size(), 4);
 
         //Step #7 ...and they are displayed
-        for (int i = 0; i < 4; i++) {
-            softAssert.assertTrue(images.get(i).isDisplayed());
-        }
+        checkElementsAreDisplayed(images);
 
         //Step #8 Assert that there are 4 texts on the Index Page under icons...
         List<WebElement> actualImageTexts = driver.findElements(By.cssSelector(".benefit-txt"));
-        assertEquals(actualImageTexts.size(), 4);
+        checkElementsAreDisplayed(actualImageTexts);
 
         //Step #8 ...and they have proper text
         List<String> expectedImageTexts = Arrays.asList(
@@ -69,27 +58,22 @@ public class Exercise1 extends BaseTestHw2 {
                 "To be flexible and\ncustomizable",
                 "To be multiplatform",
                 "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
-
-        for (int i = 0; i < 4; i++) {
-            softAssert.assertTrue(actualImageTexts.get(i).isDisplayed());
-            softAssert.assertEquals(actualImageTexts.get(i).getText(), expectedImageTexts.get(i));
-        }
+        compareLists(actualImageTexts, expectedImageTexts);
 
         // Step #9 Assert a text of the main headers
-        List<String> expectedMainHeadersTexts = Arrays.asList(
-                "EPAM framework Wishes…",
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod " +
-                        "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud " +
-                        "exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in " +
-                        "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        );
+        WebElement actualMainHeaderText = driver.findElement(By.cssSelector("[name='main-title']"));
+        checkElementIsDisplayed(actualMainHeaderText);
+        softAssert.assertEquals(actualMainHeaderText.getText(), "EPAM FRAMEWORK WISHES…");
 
-        List<WebElement> actualMainHeadersTexts = driver.findElements(By.cssSelector("[name='main-title']"));
-        actualMainHeadersTexts.add(driver.findElement(By.cssSelector("[name='jdi-text']")));
-        for (int i = 0; i < 2; i++) {
-            checkElementIsDisplayed(actualMainHeadersTexts.get(i));
-            softAssert.assertEquals(actualMainHeadersTexts.get(i).getText(), expectedMainHeadersTexts.get(i).toUpperCase());
-        }
+        WebElement jdiText = driver.findElement(By.cssSelector("[name='jdi-text']"));
+        checkElementIsDisplayed(jdiText);
+        String expectedJdiText =
+                "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
+                        "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. " +
+                        "UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT "+
+                        "ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT "+
+                        "ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
+        softAssert.assertEquals(jdiText.getText(), expectedJdiText);
 
         // Step #10 Assert that there is the iframe in the center of page
         checkElementIsDisplayed(driver.findElement(By.id("iframe")));
@@ -102,24 +86,19 @@ public class Exercise1 extends BaseTestHw2 {
         driver.switchTo().defaultContent();
 
         // Step #13 Assert a text of the sub header
-        checkElementIsDisplayed(driver.findElement(By.cssSelector("h3 a")));
-        assertEquals(driver.findElement(By.cssSelector("h3 a")).getText(), "JDI GITHUB");
+        WebElement subHeader = driver.findElement(By.cssSelector("h3 a"));
+        checkElementIsDisplayed(subHeader);
+        softAssert.assertEquals(subHeader.getText(), "JDI GITHUB");
 
         // Step #14 Assert that JDI GITHUB is a link and has a proper URL
-        checkElementIsDisplayed(driver.findElement(By.cssSelector("h3 a")));
-        assertEquals(driver.findElement(By.cssSelector("h3 a")).getAttribute("href"), "https://github.com/epam/JDI");
+        softAssert.assertEquals(subHeader.getAttribute("href"), "https://github.com/epam/JDI");
 
         // Step #15 Assert that there is Left Section
         checkElementIsDisplayed(driver.findElement(By.id("mCSB_1")));
 
-        //Assert that there is Footer
+        //Step #16 Assert that there is Footer
         checkElementIsDisplayed(driver.findElement(By.tagName("footer")));
 
         softAssert.assertAll();
     }
-
-    private void checkElementIsDisplayed(WebElement webElement) {
-        assertTrue(webElement.isDisplayed());
-    }
-
 }

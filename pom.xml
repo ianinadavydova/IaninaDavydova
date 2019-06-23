@@ -16,7 +16,7 @@
     </properties>
 
     <profiles>
-    <!--    <profile>
+        <profile>
             <id>add-substract-tests</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
@@ -43,7 +43,7 @@
                 <suite.xml>src/test/resources/AllOperationsTestSuite.xml</suite.xml>
             </properties>
         </profile>
-        -->
+
         <profile>
             <id>hw2-tests</id>
             <activation>
@@ -99,7 +99,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
-                    <suiteXmlFile>${suite.xml}</suiteXmlFile>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suite.xml}</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>
