@@ -69,8 +69,8 @@ public class BaseTestHw2 {
 
     protected void compareLists(List<WebElement> actual, List<String> expected) {
         assertEquals(actual.size(), expected.size());
-        // TODO It is better to use i < actual.size()
-        for (int i = 0; i != actual.size(); ++i) {
+        // TODO It is better to use i < actual.size() - FIXED
+        for (int i = 0; i < actual.size(); ++i) {
             softAssert.assertEquals(actual.get(i).getText(), expected.get(i));
         }
     }
