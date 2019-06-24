@@ -80,13 +80,11 @@ public class BaseTestHw2 {
     }
 
     protected void selectElement(WebElement element) {
-        // TODO Is is required check, that element is not selected? - Not required, deleted.
         element.click();
         assertTrue(element.isSelected());
     }
 
     protected void deselectElement(WebElement element) {
-        // TODO Is is required check, that element is selected? - Not required, deleted.
         element.click();
         assertFalse(element.isSelected());
     }
