@@ -12,17 +12,14 @@ import static org.testng.Assert.assertEquals;
 
 public class Exercise1 extends BaseTestHw2 {
 
-    // TODO It could be made as constant - FIXED
     private final static List<String> EXPECTED_NAV_BAR_ITEMS_TEXTS = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
 
-    // TODO It could be made as constant - FIXED
     private final static List<String> EXPECTED_IMAGE_TEXTS = Arrays.asList(
             "To include good practices\nand ideas from successful\nEPAM project",
             "To be flexible and\ncustomizable",
             "To be multiplatform",
             "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
 
-    // TODO It could be made as constant - FIXED
     private final static String EXPECTED_JDI_TEXT =
             "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
                     "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. " +
