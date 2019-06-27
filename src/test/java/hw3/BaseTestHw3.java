@@ -1,22 +1,15 @@
 package hw3;
 
+import hw3.utils.FileUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
-import java.nio.file.Paths;
-import java.util.List;
+import java.util.Properties;
 
-import static org.testng.Assert.*;
-
-public class BaseTestHw2 {
+public class BaseTestHw3 {
 
     protected WebDriver driver;
     protected SoftAssert softAssert;
@@ -26,10 +19,11 @@ public class BaseTestHw2 {
         WebDriverManager.chromedriver().setup();
     }
 
-    @BeforeClass
+    @BeforeTest
     public void setUp() {
         driver = new ChromeDriver();
-        driver.get("https://epam.github.io/JDI/");
+        Properties url = FileUtils.readPropertiesFromFile("src/main/resources/url.properties");
+        driver.get(url.getProperty("url.link"));
         driver.manage().window().maximize();
     }
 
@@ -43,7 +37,7 @@ public class BaseTestHw2 {
         driver.close();
     }
 
-    protected void siteOpeningCheck(String url) {
+/*    protected void siteOpeningCheck(String url) {
         assertEquals(driver.getCurrentUrl(), url);
     }
 
@@ -51,11 +45,7 @@ public class BaseTestHw2 {
         assertEquals(driver.getTitle(), browserTitle);
     }
 
-    protected void loginCheck(String login, String password, String userName) {
-        driver.findElement(By.id("user-icon")).click();
-        driver.findElement(By.id("name")).sendKeys(login);
-        driver.findElement(By.cssSelector("#password")).sendKeys(password);
-        driver.findElement(By.xpath("//button[@id='login-button']")).click();
+    protected void loginCheck() {
         assertEquals(driver.findElement(By.id("user-name")).getText(), userName.toUpperCase());
     }
 
@@ -93,5 +83,5 @@ public class BaseTestHw2 {
 
     protected String getLastLogRecord() {
         return driver.findElement(By.cssSelector(".panel-body-list.logs > li")).getText();
-    }
+    }*/
 }

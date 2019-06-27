@@ -43,14 +43,22 @@
                 <suite.xml>src/test/resources/AllOperationsTestSuite.xml</suite.xml>
             </properties>
         </profile>
-
         <profile>
             <id>hw2-tests</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw2TestSuite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw3-tests</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>src/test/resources/hw2TestSuite.xml</suite.xml>
+                <suite.xml>src/test/resources/hw3TestSuite.xml</suite.xml>
             </properties>
         </profile>
     </profiles>

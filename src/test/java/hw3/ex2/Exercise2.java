@@ -1,6 +1,6 @@
 package hw3.ex2;
 
-import hw3.BaseTestHw2;
+import hw3.BaseTestHw3;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -12,8 +12,8 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class Exercise2 extends BaseTestHw2 {
-
+public class Exercise2 extends BaseTestHw3 {
+/*
     private static final List<String> EXPECTED_SERVICE_DROPDOWN_ITEMS = Arrays.asList(
             "Support", "Dates", "Complex Table", "Simple Table", "Tables With Pages", "Different Elements");
 
@@ -28,8 +28,8 @@ public class Exercise2 extends BaseTestHw2 {
         // Step #2 Assert Browser title
         browserTitleCheck("Home Page");
 
-        /* Step #3,4 Perform login
-            Assert User name in the left-top side of screen that user is loggined */
+        *//* Step #3,4 Perform login
+            Assert User name in the left-top side of screen that user is loggined *//*
         loginCheck("epam", "1234", "Piter Chailovskii");
 
         //Step #5-17
@@ -114,5 +114,5 @@ public class Exercise2 extends BaseTestHw2 {
     private void deselectCheckboxAndCheckLog(WebElement checkbox, String name) {
         deselectElement(checkbox);
         softAssert.assertTrue(getLastLogRecord().endsWith(name + ": condition changed to false"));
-    }
+    }*/
 }

@@ -1,72 +1,36 @@
 package hw3.ex1;
 
-import hw3.BaseTestHw2;
-import hw3.IndexPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
+import hw3.BaseTestHw3;
+import hw3.steps.Exercise1Steps;
+
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-import java.util.List;
+public class Exercise1 extends BaseTestHw3 {
 
-import static org.testng.Assert.assertEquals;
-
-public class Exercise1 extends BaseTestHw2 {
-
-    private final static List<String> EXPECTED_NAV_BAR_ITEMS_TEXTS = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
-
-    private final static List<String> EXPECTED_IMAGE_TEXTS = Arrays.asList(
-            "To include good practices\nand ideas from successful\nEPAM project",
-            "To be flexible and\ncustomizable",
-            "To be multiplatform",
-            "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
-
-    private final static String EXPECTED_JDI_TEXT =
-            "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
-                    "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. " +
-                    "UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT "+
-                    "ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT "+
-                    "ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
-
-
-
-    @Test
-    public void loginTest() {
-        IndexPage indexPage = PageFactory.initElements(driver, IndexPage.class);
-        indexPage.login("epam", "1234");
-
-        assertEquals(driver.findElement(By.id("user-name")).getText(), "PITER CHAILOVSKII");
-    }
+    Exercise1Steps exercise1Steps = new Exercise1Steps(driver);
 
     @Test
     public void exercise1Test() {
         // Step #1 Open test site by URL, test site is opened
-        siteOpeningCheck("https://epam.github.io/JDI/index.html");
+        exercise1Steps.checkURL();
 
         // Step #2 Assert Browser title
-        browserTitleCheck("Home Page");
+        exercise1Steps.checkPageTitle();
 
-        /* Step #3,4 Perform login
-            Assert User name in the left-top side of screen that user is loggined */
-        loginCheck("epam", "1234", "Piter Chailovskii");
+        //Step #3 Perform login
+        exercise1Steps.login();
+
+        // Step#4 Assert User name in the left-top side of screen that user is loggined
+        exercise1Steps.checkUser();
 
         // Step #5 Assert Browser title
-        browserTitleCheck("Home Page");
-
-        //Step #6-17
-        pageContentTest();
-    }
-
-    private void pageContentTest() {
+        exercise1Steps.checkPageTitle();
 
         //Step #6 Assert that there are 4 items on the header section are displayed and they have proper texts
+        exercise1Steps.checkNavBarItems();
 
-        List<WebElement> actualNavBarItems = driver.findElements(By.cssSelector(".nav>li>a"));
-        checkElementsAreDisplayed(actualNavBarItems);
-        compareLists(actualNavBarItems, EXPECTED_NAV_BAR_ITEMS_TEXTS);
-
-        //Step #7 Assert that there are 4 images on the Index Page...
+     /*   //Step #7 Assert that there are 4 images on the Index Page...
         List<WebElement> images = driver.findElements(By.cssSelector(".benefit-icon"));
         assertEquals(images.size(), 4);
 
@@ -113,6 +77,6 @@ public class Exercise1 extends BaseTestHw2 {
         //Step #16 Assert that there is Footer
         checkElementIsDisplayed(driver.findElement(By.tagName("footer")));
 
-        softAssert.assertAll();
+        softAssert.assertAll();*/
     }
 }
