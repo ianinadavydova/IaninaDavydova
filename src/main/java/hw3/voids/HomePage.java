@@ -8,6 +8,24 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class HomePage extends BasePage  {
+    @FindBy(id = "user-icon")
+    private WebElement userIcon;
+
+    @FindBy(id = "name")
+    private WebElement loginNameTextField;
+
+    @FindBy(id = "password")
+    private WebElement password;
+
+    @FindBy(xpath = "//button[@id='login-button']")
+    private WebElement loginButton;
+
+    @FindBy(id = "user-name")
+    private WebElement userName;
+
+    @FindBy(css = ".nav>li>a")
+    private List<WebElement> navBarItems;
+
     @FindBy(css = ".benefit-icon")
     private List<WebElement> images;
 
@@ -51,6 +69,21 @@ public class HomePage extends BasePage  {
 
     public HomePage(WebDriver driver) {
         super(driver);
+    }
+
+    public void login(String userName, String password) {
+        userIcon.click();
+        loginNameTextField.sendKeys(userName);
+        this.password.sendKeys(password);
+        loginButton.click();
+    }
+
+    public String getUserName() {
+        return userName.getText();
+    }
+
+    public List<WebElement> getNavBarItems() {
+        return navBarItems;
     }
 
     public List<WebElement> getImages() {
