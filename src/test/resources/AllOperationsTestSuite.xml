@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite text="AllOPerationsTestSuite">
-    <test text="all-tests">
+<suite name="AllOPerationsTestSuite">
+    <test name="all-tests">
         <packages>
-            <package text="hw1"/>
+            <package name="hw1"/>
         </packages>
     </test>
 </suite>

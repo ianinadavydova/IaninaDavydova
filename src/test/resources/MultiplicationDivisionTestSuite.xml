@@ -1,9 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite text="MultiplicationDivisionTestSuite">
-    <test text="multiplication-division-tests">
+<suite name="MultiplicationDivisionTestSuite">
+    <test name="multiplication-division-tests">
         <classes>
-            <class text="hw1.MultiplicationTest"/>
-            <class text="hw1.DivisionTest"/>
+            <class name="hw1.MultiplicationTest"/>
+            <class name="hw1.DivisionTest"/>
         </classes>
     </test>
 </suite>
