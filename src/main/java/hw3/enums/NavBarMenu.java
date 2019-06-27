@@ -2,23 +2,23 @@ package hw3.enums;
 
 public enum NavBarMenu {
 
-    HOME("Home"),
-    CONTACT_FORM("Contact form"),
-    SERVICE("Service"),
-    METALSCOLORS("Metals & Colors");
+    HOME("HOME"),
+    CONTACT_FORM("CONTACT FORM"),
+    SERVICE("SERVICE"),
+    METALS_COLORS("METALS & COLORS");
 
-    private final String name;
+    private final String text;
 
-    NavBarMenu(String name) {
-        this.name = name;
+    NavBarMenu(String text) {
+        this.text = text;
     }
 
-    public String getName() {
-        return name;
+    public String getText() {
+        return text;
     }
 
     @Override
     public String toString() {
-        return name;
+        return text;
     }
 }

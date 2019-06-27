@@ -1,30 +1,37 @@
 package hw3.steps;
 
-import hw3.enums.BaseEnum;
-import hw3.enums.NavBarMenu;
+import hw3.enums.Page;
 import hw3.voids.HomePage;
 import hw3.utils.FileUtils;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.asserts.SoftAssert;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public abstract class BaseSteps {
-    protected HomePage homePage;
+    protected final HomePage homePage;
+    private final String url;
+    private final Properties userProperties;
+    protected final SoftAssert softAssert;
 
-
-    Properties userProperties = FileUtils.readPropertiesFromFile("src/main/resources/user.properties");
-    Properties urlProperties = FileUtils.readPropertiesFromFile("src/main/resources/url.properties");
+    protected BaseSteps(WebDriver driver, String url, SoftAssert softAssert) throws IOException {
+        homePage = new HomePage(driver);
+        this.url = url;
+        this.softAssert = softAssert;
+        userProperties = FileUtils.readPropertiesFromFile("src/test/resources/properties/user.properties");
+    }
 
     public void checkURL() {
-        assertEquals(homePage.getURL(), urlProperties.getProperty("url.link"));
+        softAssert.assertEquals(homePage.getURL(), url);
     }
 
     public void checkPageTitle() {
-        assertEquals(homePage.getTitle(), BaseEnum.HOME_PAGE_TITLE.getPageTitle());
+        softAssert.assertEquals(homePage.getTitle(), Page.HOME.getTitle());
     }
 
     public void login() {
@@ -32,25 +39,23 @@ public abstract class BaseSteps {
     }
 
     public void checkUser() {
-        assertEquals(homePage.getUserName(), userProperties.getProperty("user.user.name"));
+        softAssert.assertEquals(homePage.getUserName(), userProperties.getProperty("user.user.name"));
     }
 
-    public void checkNavBarItems() {
-        List<WebElement> navBarItems = homePage.getNavBarItems();
-        checkAllElementsAreDisplayed(navBarItems);
-        compareLists(navBarItems, NavBarMenu.values());
+    protected void checkElementIsDisplayed(WebElement element) {
+        softAssert.assertTrue(element.isDisplayed());
     }
 
-    private void checkAllElementsAreDisplayed(List<WebElement> elements) {
+    protected void checkAllElementsAreDisplayed(List<WebElement> elements) {
         for (WebElement element : elements) {
-            assertTrue(element.isDisplayed());
+            softAssert.assertTrue(element.isDisplayed());
         }
     }
 
-    private <Item> void compareLists(List<WebElement> actual, Item[] expected) {
+    protected  <Item> void compareLists(List<WebElement> actual, Item[] expected) {
         assertEquals(actual.size(), expected.length);
         for (int i = 0; i < expected.length; ++i) {
-            assertEquals(actual.get(i).getText(), expected[i].toString());
+            softAssert.assertEquals(actual.get(i).getText(), expected[i].toString());
         }
     }
 }

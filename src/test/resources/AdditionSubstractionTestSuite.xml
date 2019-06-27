@@ -1,9 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="AdditionSubstractionTestSuite">
-    <test name="addition-substraction-tests">
+<suite text="AdditionSubstractionTestSuite">
+    <test text="addition-substraction-tests">
         <classes>
-            <class name="hw1.AdditionTest"/>
-            <class name="hw1.SubstractionTest"/>
+            <class text="hw1.AdditionTest"/>
+            <class text="hw1.SubstractionTest"/>
         </classes>
     </test>
 </suite>

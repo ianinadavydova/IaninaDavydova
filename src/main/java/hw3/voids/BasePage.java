@@ -11,7 +11,7 @@ import java.util.List;
 
 public abstract class BasePage {
 
-    protected WebDriver driver;
+    protected final WebDriver driver;
 
     @FindBy(id = "user-icon")
     private WebElement userIcon;
@@ -30,7 +30,6 @@ public abstract class BasePage {
 
     @FindBy(css = ".nav>li>a")
     private List<WebElement> navBarItems;
-
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
@@ -59,9 +58,4 @@ public abstract class BasePage {
     public List<WebElement> getNavBarItems() {
         return navBarItems;
     }
-
-    public void clickNavBarItem(NavBarMenu menuItem) {
-        driver.findElement(By.linkText(menuItem.getName())).click();
-    }
-
 }

@@ -7,12 +7,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
-import java.util.Properties;
+import java.io.IOException;
 
 public class BaseTestHw3 {
 
     protected WebDriver driver;
     protected SoftAssert softAssert;
+    protected String url;
 
     @BeforeSuite
     public void setUpDriverPath() {
@@ -20,10 +21,10 @@ public class BaseTestHw3 {
     }
 
     @BeforeTest
-    public void setUp() {
+    public void setUp() throws IOException {
         driver = new ChromeDriver();
-        Properties url = FileUtils.readPropertiesFromFile("src/main/resources/url.properties");
-        driver.get(url.getProperty("url.link"));
+        url = FileUtils.readPropertiesFromFile("src/test/resources/properties/url.properties").getProperty("url.link");
+        driver.get(url);
         driver.manage().window().maximize();
     }
 
