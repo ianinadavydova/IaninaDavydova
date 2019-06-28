@@ -2,25 +2,15 @@ package hw3.ex1;
 
 import hw3.BaseTestHw3;
 import hw3.steps.Exercise1Steps;
-
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import java.io.IOException;
 
 public class Exercise1 extends BaseTestHw3 {
 
     @Test
     public void exercise1Test() {
         SoftAssert softAssert = new SoftAssert();
-        Exercise1Steps exercise1Steps = null;
-        try {
-            exercise1Steps = new Exercise1Steps(driver, url, softAssert);
-        } catch (IOException e) {
-            e.printStackTrace();
-            Assert.fail();
-        }
+        Exercise1Steps exercise1Steps = new Exercise1Steps(driver, url, softAssert);
 
         // Step #1 Open test site by URL, test site is opened
         exercise1Steps.checkURL();

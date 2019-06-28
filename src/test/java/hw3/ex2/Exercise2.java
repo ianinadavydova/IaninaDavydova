@@ -19,13 +19,7 @@ public class Exercise2 extends BaseTestHw3 {
     @Test
     public void exercise2Test() {
         SoftAssert softAssert = new SoftAssert();
-        Exercise2Steps exercise2Steps = null;
-        try {
-            exercise2Steps = new Exercise2Steps(driver, url, softAssert);
-        } catch (IOException e) {
-            e.printStackTrace();
-            Assert.fail();
-        }
+        Exercise2Steps exercise2Steps = new Exercise2Steps(driver, url, softAssert);
 
         exercise2Steps.checkURL();
 

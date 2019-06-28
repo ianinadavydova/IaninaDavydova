@@ -5,6 +5,7 @@ import hw3.voids.HomePage;
 import hw3.utils.FileUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
@@ -16,15 +17,20 @@ import static org.testng.Assert.assertEquals;
 public abstract class BaseSteps {
     protected final HomePage homePage;
     private final String url;
-    private final Properties userProperties;
+    private Properties userProperties;
     protected final SoftAssert softAssert;
 
-    protected BaseSteps(WebDriver driver, String url, SoftAssert softAssert) throws IOException {
+    protected BaseSteps(WebDriver driver, String url, SoftAssert softAssert) {
         homePage = new HomePage(driver);
         this.url = url;
         this.softAssert = softAssert;
-        // TODO It is better to have try-catch block on the low level
-        userProperties = FileUtils.readPropertiesFromFile("src/test/resources/properties/user.properties");
+        // TODO It is better to have try-catch block on the low level - FIXED
+        try {
+            userProperties = FileUtils.readPropertiesFromFile("src/test/resources/properties/user.properties");
+        } catch (IOException e) {
+            e.printStackTrace();
+            Assert.fail();
+        }
     }
 
     public void checkURL() {

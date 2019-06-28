@@ -7,14 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.asserts.SoftAssert;
 
-import java.io.IOException;
 import java.util.List;
 
 public class Exercise2Steps extends BaseSteps {
 
     private final DifferentElementsPage differentElementsPage;
 
-    public Exercise2Steps(WebDriver driver, String url, SoftAssert softAssert) throws IOException {
+    public Exercise2Steps(WebDriver driver, String url, SoftAssert softAssert) {
         super(driver, url, softAssert);
         differentElementsPage = new DifferentElementsPage(driver);
     }

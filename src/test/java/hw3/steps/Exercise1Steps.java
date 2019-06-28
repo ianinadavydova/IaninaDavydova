@@ -8,12 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
 
-import java.io.IOException;
 import java.util.List;
 
 public class Exercise1Steps extends BaseSteps {
 
-    public Exercise1Steps(WebDriver driver, String url, SoftAssert softAssert) throws IOException {
+    public Exercise1Steps(WebDriver driver, String url, SoftAssert softAssert) {
         super(driver, url, softAssert);
     }
 
