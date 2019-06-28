@@ -23,6 +23,7 @@ public abstract class BaseSteps {
         homePage = new HomePage(driver);
         this.url = url;
         this.softAssert = softAssert;
+        // TODO It is better to have try-catch block on the low level
         userProperties = FileUtils.readPropertiesFromFile("src/test/resources/properties/user.properties");
     }
 
