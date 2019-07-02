@@ -23,8 +23,8 @@ public class DataSample {
         }
     }
     Summary summary;
-    final Element elements[];
+    final Element[] elements;
     final Color color;
     final Metal metal;
-    final Vegetable vegetables[];
+    final Vegetable[] vegetables;
 }

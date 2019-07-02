@@ -40,9 +40,7 @@ public class BaseTestHw4 {
     }
 
     protected String getUrl() {
-        String url = null;
-        url = readProperties("src/test/resources/properties/url.properties").getProperty("url.link");
-        return url;
+        return readProperties("src/test/resources/properties/url.properties").getProperty("url.link");
     }
 
     protected User getTestUser() {
