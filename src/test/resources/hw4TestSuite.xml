@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="hw4TestSuite">
+    <test name="hw4-tests">
+        <classes>
+            <class name="hw4.ex1.Exercise1"/>
+            <class name="hw4.ex2.Exercise2"/>
+        </classes>
+    </test>
+</suite>

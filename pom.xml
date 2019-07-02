@@ -55,10 +55,19 @@
         <profile>
             <id>hw3-tests</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.xml>src/test/resources/hw3TestSuite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw4-tests</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw4TestSuite.xml</suite.xml>
             </properties>
         </profile>
     </profiles>
@@ -93,6 +102,15 @@
             <artifactId>webdrivermanager</artifactId>
             <version>3.6.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>5.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId></groupId>
+            <artifactId></artifactId>
         </dependency>
     </dependencies>
 
