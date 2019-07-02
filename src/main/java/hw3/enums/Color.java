@@ -1,7 +1,9 @@
 package hw3.enums;
 
 public enum Color {
-    YELLOW("Yellow");
+    YELLOW("Yellow"),
+    GREEN("Green"),
+    BLUE("Blue");
 
     private final String text;
 

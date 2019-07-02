@@ -1,6 +1,6 @@
 package hw3.enums;
 
-public enum RadioButton {
+public enum Metal {
     GOLD("Gold"),
     SILVER("Silver"),
     BRONZE("Bronze"),
@@ -8,7 +8,7 @@ public enum RadioButton {
 
     private final String name;
 
-    RadioButton(String name) {
+    Metal(String name) {
         this.name = name;
     }
 

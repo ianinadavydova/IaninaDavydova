@@ -35,8 +35,8 @@ public class Exercise2Steps extends BaseSteps {
     }
 
     public void checkDifferentElementsCount() {
-        softAssert.assertEquals(differentElementsPage.getCheckBoxes().size(), CheckBox.values().length);
-        softAssert.assertEquals(differentElementsPage.getRadioButtons().size(), RadioButton.values().length);
+        softAssert.assertEquals(differentElementsPage.getCheckBoxes().size(), Element.values().length);
+        softAssert.assertEquals(differentElementsPage.getRadioButtons().size(), Metal.values().length);
         softAssert.assertEquals(differentElementsPage.getButtons().size(), Button.values().length);
         checkElementIsDisplayed(differentElementsPage.getColorsDropDown());
     }
@@ -49,13 +49,13 @@ public class Exercise2Steps extends BaseSteps {
         checkElementIsDisplayed(differentElementsPage.getNavigationSideBar());
     }
 
-    public void selectCheckBoxAndCheckLog(CheckBox checkBox) {
+    public void selectCheckBoxAndCheckLog(Element checkBox) {
         String name = checkBox.getName();
         findElementByLabelAndClick(differentElementsPage.getCheckBoxes(), name);
         softAssert.assertTrue(getLastLogRecord().endsWith(name + ": condition changed to true"));
     }
 
-    public void selectRadioButtonAndCheckLog(RadioButton button) {
+    public void selectRadioButtonAndCheckLog(Metal button) {
         String name = button.getName();
         findElementByLabelAndClick(differentElementsPage.getRadioButtons(), name);
         softAssert.assertTrue(getLastLogRecord().contains("metal: value changed to " + name));
@@ -70,7 +70,7 @@ public class Exercise2Steps extends BaseSteps {
         softAssert.assertTrue(getLastLogRecord().contains("Colors: value changed to " + colorText));
     }
 
-    public void deselectCheckBoxAndCheckLog(CheckBox checkBox) {
+    public void deselectCheckBoxAndCheckLog(Element checkBox) {
         String name = checkBox.getName();
         findElementByLabelAndClick(differentElementsPage.getCheckBoxes(), name);
         softAssert.assertTrue(getLastLogRecord().endsWith(name + ": condition changed to false"));

@@ -1,6 +1,6 @@
 package hw3.enums;
 
-public enum CheckBox {
+public enum Element {
     WATER("Water"),
     EARTH("Earth"),
     WIND("Wind"),
@@ -8,7 +8,7 @@ public enum CheckBox {
 
     private final String name;
 
-    CheckBox(String name) {
+    Element(String name) {
         this.name = name;
     }
 

@@ -1,27 +1,24 @@
 package hw4;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.Properties;
 
+@Builder
+@Getter
+@ToString
 public class User {
     private String userName;
     private String password;
     private String name;
 
-    public User(Properties userProperties) {
-        userName = userProperties.getProperty("user.name");
-        password = userProperties.getProperty("user.password");
-        name = userProperties.getProperty("user.user.name");
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getName() {
-        return name;
+    public static User createFromProperties(Properties properties) {
+        return User.builder()
+                .userName(properties.getProperty("user.name"))
+                .password(properties.getProperty("user.password"))
+                .name(properties.getProperty("user.user.name"))
+                .build();
     }
 }

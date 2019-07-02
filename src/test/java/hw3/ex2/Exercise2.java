@@ -1,15 +1,12 @@
 package hw3.ex2;
 
 import hw3.BaseTestHw3;
-import hw3.enums.CheckBox;
+import hw3.enums.Element;
 import hw3.enums.Color;
-import hw3.enums.RadioButton;
+import hw3.enums.Metal;
 import hw3.steps.Exercise2Steps;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import java.io.IOException;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -52,12 +49,12 @@ public class Exercise2 extends BaseTestHw3 {
 
         //Step #11 Select checkboxes
         //Step #12 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-        exercise2Steps.selectCheckBoxAndCheckLog(CheckBox.WATER);
-        exercise2Steps.selectCheckBoxAndCheckLog(CheckBox.WIND);
+        exercise2Steps.selectCheckBoxAndCheckLog(Element.WATER);
+        exercise2Steps.selectCheckBoxAndCheckLog(Element.WIND);
 
         //Step #13 Select radio
         //Step #14 Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton.
-        exercise2Steps.selectRadioButtonAndCheckLog(RadioButton.SELEN);
+        exercise2Steps.selectRadioButtonAndCheckLog(Metal.SELEN);
 
         //Step #15 Select in dropdown
         //Step #16 Assert that for dropdown there is a log row and value is corresponded to the selected value.
@@ -65,8 +62,8 @@ public class Exercise2 extends BaseTestHw3 {
 
         // Step #17 Unselect and assert checkboxes
         // Step #18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-        exercise2Steps.deselectCheckBoxAndCheckLog(CheckBox.WATER);
-        exercise2Steps.deselectCheckBoxAndCheckLog(CheckBox.WIND);
+        exercise2Steps.deselectCheckBoxAndCheckLog(Element.WATER);
+        exercise2Steps.deselectCheckBoxAndCheckLog(Element.WIND);
 
         softAssert.assertAll();
     }

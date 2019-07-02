@@ -3,6 +3,8 @@ package hw4;
 import com.codeborne.selenide.Browsers;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
+import hw3.enums.Page;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -10,6 +12,8 @@ import org.testng.annotations.BeforeMethod;
 import java.io.IOException;
 import java.util.Properties;
 
+import static com.codeborne.selenide.Condition.attribute;
+import static com.codeborne.selenide.Selenide.open;
 import static hw3.utils.FileUtils.readPropertiesFromFile;
 
 public class BaseTestHw4 {
@@ -41,10 +45,25 @@ public class BaseTestHw4 {
         return url;
     }
 
-    protected Properties getUserProperties() {
-        Properties userProperties = null;
-        userProperties = readProperties("src/test/resources/properties/user.properties");
-        return userProperties;
+    protected User getTestUser() {
+        return User.createFromProperties(readProperties("src/test/resources/properties/user.properties"));
+    }
+
+    protected HomePage getHomePage() {
+        // Step #1 Open test site by URL, test site is opened
+        HomePage homePage = open(getUrl(), HomePage.class);
+
+        // Step #2 Assert Browser title
+        homePage.getTitle().shouldHave(attribute("text", Page.HOME.getTitle()));
+
+        // Step #3 Perform login
+        homePage.login(getTestUser());
+
+        return homePage;
+    }
+
+    protected static <PageObjectClass> PageObjectClass createPage(Class<PageObjectClass> pageObjectClass) {
+        return WebDriverRunner.getSelenideDriver().page(pageObjectClass);
     }
 
     @AfterMethod
