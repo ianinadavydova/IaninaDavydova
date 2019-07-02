@@ -8,10 +8,13 @@ import java.util.Properties;
 public class FileUtils {
 
     public static Properties readPropertiesFromFile(String filePath) throws IOException {
+        Properties prop = new Properties();
+
         try (InputStream input = new FileInputStream(filePath)) {
-            Properties prop = new Properties();
+
             prop.load(input);
-            return prop;
+
         }
+        return prop;
     }
 }
