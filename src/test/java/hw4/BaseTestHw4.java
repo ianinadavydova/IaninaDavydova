@@ -61,11 +61,13 @@ public class BaseTestHw4 {
     }
 
     protected static <PageObjectClass> PageObjectClass createPage(Class<PageObjectClass> pageObjectClass) {
+        // TODO Why do you decide do not use simple Selenide.page()?
         return WebDriverRunner.getSelenideDriver().page(pageObjectClass);
     }
 
     @AfterMethod
     public void tearDown() {
+        // TODO Could be used static import for close()
         Selenide.close();
     }
 }
