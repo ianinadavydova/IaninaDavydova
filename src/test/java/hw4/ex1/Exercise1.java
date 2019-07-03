@@ -37,6 +37,7 @@ public class Exercise1 extends BaseTestHw4 {
         homePage.getService().click();
         homePage.getTablePagesItem().click();
 
+        // TODO Could be used Selenide.page() instead of createPage(TableWithPagesPage.class)
         checkTableWithPages(createPage(TableWithPagesPage.class));
     }
 
