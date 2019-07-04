@@ -2,6 +2,7 @@ package hw4.ex2;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import hw3.enums.Color;
 import hw3.enums.Element;
@@ -29,7 +30,7 @@ public class Exercise2 extends BaseTestHw4 {
 
         // Step #4 Click on the link on the Header section
         homePage.getMetalsAndColors().click();
-        checkMetalAndColorsPage(createPage(MetalAndColorsPage.class), sample);
+        checkMetalAndColorsPage(Selenide.page(MetalAndColorsPage.class), sample);
     }
 
     private static void checkMetalAndColorsPage(MetalAndColorsPage page, DataSample sample) {

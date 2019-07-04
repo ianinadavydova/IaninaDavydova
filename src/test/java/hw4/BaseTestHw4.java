@@ -2,7 +2,6 @@ package hw4;
 
 import com.codeborne.selenide.Browsers;
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import hw3.enums.Page;
 import org.testng.Assert;
@@ -13,6 +12,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import static com.codeborne.selenide.Condition.attribute;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 import static hw3.utils.FileUtils.readPropertiesFromFile;
 
@@ -60,14 +60,9 @@ public class BaseTestHw4 {
         return homePage;
     }
 
-    protected static <PageObjectClass> PageObjectClass createPage(Class<PageObjectClass> pageObjectClass) {
-        // TODO Why do you decide do not use simple Selenide.page()?
-        return WebDriverRunner.getSelenideDriver().page(pageObjectClass);
-    }
-
     @AfterMethod
     public void tearDown() {
-        // TODO Could be used static import for close()
-        Selenide.close();
+        // TODO Could be used static import for close() - FIXED
+        close();
     }
 }

@@ -2,6 +2,7 @@ package hw4.ex1;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import hw3.enums.ServiceDropdownItem;
 import hw4.BaseTestHw4;
@@ -37,8 +38,8 @@ public class Exercise1 extends BaseTestHw4 {
         homePage.getService().click();
         homePage.getTablePagesItem().click();
 
-        // TODO Could be used Selenide.page() instead of createPage(TableWithPagesPage.class)
-        checkTableWithPages(createPage(TableWithPagesPage.class));
+        // TODO Could be used Selenide.page() instead of createPage(TableWithPagesPage.class) - FIXED
+        checkTableWithPages(Selenide.page(TableWithPagesPage.class));
     }
 
     private static void checkAreValidServiceDropDownItems(ElementsCollection items) {
