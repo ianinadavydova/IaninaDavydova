@@ -11,8 +11,8 @@ import org.testng.asserts.SoftAssert;
 @Listeners(AllureAttachmentListener.class)
 public class Exercise1 extends BaseTestHw3 {
 
-    @Feature(value = "Tests hw5 Exercise1")
-    @Story(value = "Test failure for checking Jenkins integration")
+    @Feature("Tests hw5 Exercise1")
+    @Story("Test failure for checking Jenkins integration")
 
     @Test
     public void exercise1Test() {

@@ -18,8 +18,8 @@ import static org.testng.Assert.assertTrue;
 @Listeners(AllureAttachmentListener.class)
 public class Exercise2 extends BaseTestHw3 {
 
-    @Feature(value = "Tests hw3 exercise2")
-    @Story(value = "Testing JDI page actions with elements")
+    @Feature("Tests hw3 exercise2")
+    @Story("Testing JDI page actions with elements")
     @Test
     public void exercise2Test() {
         SoftAssert softAssert = new SoftAssert();

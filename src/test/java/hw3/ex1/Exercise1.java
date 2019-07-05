@@ -12,8 +12,8 @@ import org.testng.asserts.SoftAssert;
 @Listeners(AllureAttachmentListener.class)
 public class Exercise1 extends BaseTestHw3 {
 
-    @Feature(value = "Tests hw3 exercise1")
-    @Story(value = "Testing JDI page content")
+    @Feature("Tests hw3 exercise1")
+    @Story("Testing JDI page content")
     @Test
     public void exercise1Test() {
         SoftAssert softAssert = new SoftAssert();
