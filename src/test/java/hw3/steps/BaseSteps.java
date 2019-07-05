@@ -54,6 +54,11 @@ public abstract class BaseSteps {
         softAssert.assertEquals(homePage.getUserName(), userProperties.getProperty("user.user.name"));
     }
 
+    @Step("Check user and fail")
+    public void checkUserFail() {
+        softAssert.assertEquals(homePage.getUserName(), "PITER CHAILOVSKII1");
+    }
+
     protected void checkElementIsDisplayed(WebElement element) {
         softAssert.assertTrue(element.isDisplayed());
     }

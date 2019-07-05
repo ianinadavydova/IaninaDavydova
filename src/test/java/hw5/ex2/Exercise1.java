@@ -2,10 +2,17 @@ package hw5.ex2;
 
 import hw3.BaseTestHw3;
 import hw3.steps.Exercise1Steps;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+@Listeners(AllureAttachmentListener.class)
 public class Exercise1 extends BaseTestHw3 {
+
+    @Feature(value = "Tests hw5 Exercise1")
+    @Story(value = "Test failure for checking Jenkins integration")
 
     @Test
     public void exercise1Test() {
@@ -59,7 +66,7 @@ public class Exercise1 extends BaseTestHw3 {
         exercise1Steps.checkFooter();
 
         //Additional step to fail test
-        softAssert.fail("Test Jenkins integration");
+        exercise1Steps.checkUserFail();
 
         softAssert.assertAll();
     }

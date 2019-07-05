@@ -5,14 +5,21 @@ import hw3.enums.Element;
 import hw3.enums.Color;
 import hw3.enums.Metal;
 import hw3.steps.Exercise2Steps;
+import hw5.ex2.AllureAttachmentListener;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+@Listeners(AllureAttachmentListener.class)
 public class Exercise2 extends BaseTestHw3 {
 
+    @Feature(value = "Tests hw3 exercise2")
+    @Story(value = "Testing JDI page actions with elements")
     @Test
     public void exercise2Test() {
         SoftAssert softAssert = new SoftAssert();
