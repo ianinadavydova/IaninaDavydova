@@ -1,4 +1,4 @@
-package hw5;
+package hw5.ex2;
 
 import hw3.BaseTestHw3;
 import hw3.steps.Exercise1Steps;

@@ -64,10 +64,19 @@
         <profile>
             <id>hw4-tests</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.xml>src/test/resources/hw4TestSuite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw5-tests</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw5TestSuite.xml</suite.xml>
             </properties>
         </profile>
     </profiles>
