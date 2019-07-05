@@ -22,8 +22,8 @@ public class BaseTestHw3 {
     public void setUp() throws IOException {
         driver = new ChromeDriver();
         url = FileUtils.readPropertiesFromFile("src/test/resources/properties/url.properties").getProperty("url.link");
-        driver.get(url);
         driver.manage().window().maximize();
+        driver.get(url);
     }
 
     @AfterClass
