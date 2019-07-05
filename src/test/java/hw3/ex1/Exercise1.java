@@ -3,6 +3,7 @@ package hw3.ex1;
 import hw3.BaseTestHw3;
 import hw3.steps.Exercise1Steps;
 import hw5.ex2.AllureAttachmentListener;
+import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.Listeners;
@@ -13,7 +14,8 @@ import org.testng.asserts.SoftAssert;
 public class Exercise1 extends BaseTestHw3 {
 
     @Feature("Tests hw3 exercise1")
-    @Story("Testing JDI page content")
+    @Story("JDI page")
+    @Description("Testing JDI page content")
     @Test
     public void exercise1Test() {
         SoftAssert softAssert = new SoftAssert();

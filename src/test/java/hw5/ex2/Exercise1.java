@@ -2,6 +2,7 @@ package hw5.ex2;
 
 import hw3.BaseTestHw3;
 import hw3.steps.Exercise1Steps;
+import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.Listeners;
@@ -12,8 +13,8 @@ import org.testng.asserts.SoftAssert;
 public class Exercise1 extends BaseTestHw3 {
 
     @Feature("Tests hw5 Exercise1")
-    @Story("Test failure for checking Jenkins integration")
-
+    @Story("Test failure")
+    @Description("Test failure for checking Jenkins integration")
     @Test
     public void exercise1Test() {
         TestProvider.getInstance().setDriver(driver);
