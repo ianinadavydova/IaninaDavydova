@@ -16,6 +16,7 @@ public class Exercise1 extends BaseTestHw3 {
 
     @Test
     public void exercise1Test() {
+        TestProvider.getInstance().setDriver(driver);
         SoftAssert softAssert = new SoftAssert();
         Exercise1Steps exercise1Steps = new Exercise1Steps(driver, url, softAssert);
 
