@@ -3,6 +3,7 @@ package hw3.steps;
 import hw3.enums.Page;
 import hw3.voids.HomePage;
 import hw3.utils.FileUtils;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -33,18 +34,22 @@ public abstract class BaseSteps {
         }
     }
 
+    @Step("Check current url")
     public void checkURL() {
         softAssert.assertEquals(homePage.getURL(), url);
     }
 
+    @Step("Check current page title")
     public void checkPageTitle() {
         softAssert.assertEquals(homePage.getTitle(), Page.HOME.getTitle());
     }
 
+    @Step("Perform login")
     public void login() {
         homePage.login(userProperties.getProperty("user.name"), userProperties.getProperty("user.password"));
     }
 
+    @Step("Check loginned user")
     public void checkUser() {
         softAssert.assertEquals(homePage.getUserName(), userProperties.getProperty("user.user.name"));
     }

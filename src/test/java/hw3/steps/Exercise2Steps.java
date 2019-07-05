@@ -2,6 +2,7 @@ package hw3.steps;
 
 import hw3.enums.*;
 import hw3.voids.DifferentElementsPage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -18,22 +19,26 @@ public class Exercise2Steps extends BaseSteps {
         differentElementsPage = new DifferentElementsPage(driver);
     }
 
+    @Step("Check Service dropdown items")
     public void checkService() {
         homePage.getService().click();
         checkAreValidServiceDropDownItems(homePage.getServiceDropdownItems());
     }
 
+    @Step("Check left Service dropdown items")
     public void checkLeftService() {
         homePage.getLeftService().click();
         checkAreValidServiceDropDownItems(homePage.getLeftServiceDropdownItems());
     }
 
+    @Step("Open Different Elements page")
     public void openDifferentElementsPage() {
         homePage.getService().click();
         homePage.getDifferentElementsItem().click();
         softAssert.assertEquals(differentElementsPage.getTitle(), Page.DIFFERENT_ELEMENTS.getTitle());
     }
 
+    @Step("Check count of elements on Different Elements page")
     public void checkDifferentElementsCount() {
         softAssert.assertEquals(differentElementsPage.getCheckBoxes().size(), Element.values().length);
         softAssert.assertEquals(differentElementsPage.getRadioButtons().size(), Metal.values().length);
@@ -41,26 +46,31 @@ public class Exercise2Steps extends BaseSteps {
         checkElementIsDisplayed(differentElementsPage.getColorsDropDown());
     }
 
+    @Step("Check log sidebar exists")
     public void checkLogSideBar() {
         checkElementIsDisplayed(differentElementsPage.getLogSideBar());
     }
 
+    @Step("Check navigation bar exists")
     public void checkNavigationSideBar() {
         checkElementIsDisplayed(differentElementsPage.getNavigationSideBar());
     }
 
+    @Step("Tick checkbox and check log")
     public void selectCheckBoxAndCheckLog(Element checkBox) {
         String name = checkBox.getName();
         findElementByLabelAndClick(differentElementsPage.getCheckBoxes(), name);
         softAssert.assertTrue(getLastLogRecord().endsWith(name + ": condition changed to true"));
     }
 
+    @Step("Select radiobutton and check log")
     public void selectRadioButtonAndCheckLog(Metal button) {
         String name = button.getName();
         findElementByLabelAndClick(differentElementsPage.getRadioButtons(), name);
         softAssert.assertTrue(getLastLogRecord().contains("metal: value changed to " + name));
     }
 
+    @Step("Select dropdown and check log")
     public void selectColorsDropDownAndCheckLog(Color color) {
         WebElement colorsDropDown = differentElementsPage.getColorsDropDown();
         colorsDropDown.click();
@@ -70,6 +80,7 @@ public class Exercise2Steps extends BaseSteps {
         softAssert.assertTrue(getLastLogRecord().contains("Colors: value changed to " + colorText));
     }
 
+    @Step("Deselect all elements and check log")
     public void deselectCheckBoxAndCheckLog(Element checkBox) {
         String name = checkBox.getName();
         findElementByLabelAndClick(differentElementsPage.getCheckBoxes(), name);
