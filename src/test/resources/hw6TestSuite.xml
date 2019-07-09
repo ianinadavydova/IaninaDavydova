@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="hw6TestSuite">
+    <test name="hw6-tests">
+        <classes>
+            <class name="hw6.RunAcceptance"/>
+        </classes>
+    </test>
+</suite>

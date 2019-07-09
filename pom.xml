@@ -76,10 +76,19 @@
         <profile>
             <id>hw5-tests</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.xml>src/test/resources/hw5TestSuite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw6-tests</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw6TestSuite.xml</suite.xml>
             </properties>
         </profile>
     </profiles>
