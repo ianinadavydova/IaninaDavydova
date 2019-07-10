@@ -5,9 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import lombok.Getter;
 import org.openqa.selenium.support.FindBy;
 
-import static com.codeborne.selenide.Selenide.$;
-
-public class HomePage {
+public class HomePage extends BasePage {
     @FindBy(id = "user-icon")
     private SelenideElement userIcon;
 
@@ -49,6 +47,10 @@ public class HomePage {
     private SelenideElement tablePagesItem;
 
     @Getter
+    @FindBy(xpath = "//ul[@class='dropdown-menu']//li//a[@href='user-table.html']")
+    private SelenideElement userTableItem;
+
+    @Getter
     @FindBy(css = ".benefit-icon")
     private ElementsCollection images;
 
@@ -67,10 +69,6 @@ public class HomePage {
     @Getter
     @FindBy(xpath = "//ul[@class='dropdown-menu']//li//a[@href='different-elements.html']")
     private SelenideElement differentElementsItem;
-
-    public SelenideElement getTitle() {
-        return $("title");
-    }
 
     private HomePage typeUserName(String value) {
         loginNameTextField.sendKeys(value);

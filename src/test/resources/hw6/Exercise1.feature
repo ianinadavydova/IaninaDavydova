@@ -16,8 +16,8 @@ Feature: Exercise1
     And  Page contains headline
 
   Scenario: Menu items verification
-    When I click on 'Service' subcategory in the header
-    Then Header 'Service' drop down contains the following options:
+    When I click on "Service" button in Header
+    Then Header "Service" drop down contains the following options:
       | SUPPORT            |
       | DATES              |
       | COMPLEX TABLE      |
@@ -28,8 +28,8 @@ Feature: Exercise1
       | PERFORMANCE        |
 
   Scenario: Left menu items verification
-    When I click on 'Service' subcategory in the left section
-    Then Left section 'Service' drop down contains the following options:
+    When I click on "Service" subcategory in the left section
+    Then Left section "Service" drop down contains the following options:
       | SUPPORT            |
       | DATES              |
       | COMPLEX TABLE      |
@@ -52,6 +52,8 @@ Feature: Exercise1
     Given I am on the 'Different Elements' page
     When I select checkbox "<element>"
     Then log row with value corresponded to element "<element>" is displayed
+    When I select checkbox "<element>"
+    Then log row with value corresponded to element "<element>" deselection is displayed
 
     Examples:
       | element |
@@ -75,13 +77,3 @@ Feature: Exercise1
     Examples:
       | color |
       | Yellow |
-
-  Scenario Outline: Checkboxes deselection verification
-    Given I am on the 'Different Elements' page
-    When I select checkbox "<element>"
-    Then log row with value corresponded to element "<element>" deselection is displayed
-
-    Examples:
-      | element |
-      | Water |
-      | Wind  |
