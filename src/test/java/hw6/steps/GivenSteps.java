@@ -25,6 +25,7 @@ public class GivenSteps extends StepBackground {
         homePage = open(getUrl(), HomePage.class);
     }
 
+    // TODO Why do you decide
     @After
     public void clearPages() {
         homePage = null;
