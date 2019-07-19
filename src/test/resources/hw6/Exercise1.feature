@@ -10,6 +10,7 @@ Feature: Exercise1
     Then User name should be 'PITER CHAILOVSKII'
 
   Scenario: Home page content verification
+    # TODO It is better to have page name in the step description for the elements
     Then Page contains 4 images
     And  Page contains 4 text labels
     And  Page contains description
@@ -41,6 +42,7 @@ Feature: Exercise1
 
   Scenario: 'Different Elements' page content verification
     Given I am on the 'Different Elements' page
+        # TODO It is better to have page name in the step description for the elements
     Then Page contains 4 checkboxes
     And  Page contains 4 radios
     And  Page contains 1 dropdown
