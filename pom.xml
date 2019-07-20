@@ -92,7 +92,7 @@
             </properties>
         </profile>
         <profile>
-            <id>hw7hw8-hw8-tests</id>
+            <id>hw7-hw8-tests</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
