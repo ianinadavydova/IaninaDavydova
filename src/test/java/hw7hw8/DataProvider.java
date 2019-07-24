@@ -43,6 +43,7 @@ public class DataProvider {
 
     @org.testng.annotations.DataProvider(name = "dynamicDataSet")
     Object[][] dynamicDataSet() throws IOException {
+        // TODO gson, TypeToken
         File file = new File("src/test/resources/hw8/JDI_ex8_metalsColorsDataSet.json");
         String content = FileUtils.readFileToString(file, "utf-8");
         Map<String, Object> serializedData = new JSONObject(content).toMap();
@@ -77,7 +78,7 @@ public class DataProvider {
                     "Metal: " + metal,
                     "Vegetables: " + vegetables.stream().map(Vegetable::getName).collect(Collectors.joining(", "))
             );
-            result.add(new Object[] { formData, expectedLog });
+            result.add(new Object[]{formData, expectedLog});
         }
         return result.toArray(new Object[0][]);
     }

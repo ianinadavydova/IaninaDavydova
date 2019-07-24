@@ -20,6 +20,7 @@ import static hw7hw8.JdiTestSite.metalsColorsPage;
 import static hw7hw8.MetalsColorsPage.metalsColorsForm;
 
 public class MetalColorsFormTest {
+    // TODO
     private static final User PITER = new User().set(user -> {
         user.userName = "epam";
         user.password = "1234";
@@ -35,12 +36,14 @@ public class MetalColorsFormTest {
         };
         initElements(JdiTestSite.class);
 
+        // TODO
         homePage.open();
         homePage.checkOpened();
         userIcon.click();
         loginForm.loginAs(PITER);
     }
 
+    // TODO
     @Test(dataProviderClass = DataProvider.class, dataProvider = "staticDataSet")
     public void testStaticData(MetalsColorsEntity formData, List<String> expectedLog) {
         testImpl(formData, expectedLog);
@@ -50,12 +53,14 @@ public class MetalColorsFormTest {
     public void testDynamicData(MetalsColorsEntity formData, List<String> expectedLog) {
         testImpl(formData, expectedLog);
     }
+    // !TODO
 
     public void testImpl(MetalsColorsEntity formData, List<String> expectedLog) {
         homePage.checkLoggedin(PITER);
         header.select(NavBarMenu.METALS_COLORS);
         metalsColorsPage.checkOpened();
         metalsColorsForm.submit(formData);
+        // TODO
         Assert.assertTrue(metalsColorsPage.getLog().containsAll(expectedLog));
     }
 

@@ -6,6 +6,7 @@ import hw4.enums.Vegetable;
 
 import java.util.List;
 
+// TODO naming
 public class MetalsColorsEntity extends DataClass<MetalsColorsEntity> {
     public String summaryOdd, summaryEven;
     public List<Element> elements;

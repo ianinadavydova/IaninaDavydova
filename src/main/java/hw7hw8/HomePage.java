@@ -13,10 +13,17 @@ import org.hamcrest.Matchers;
 
 @Url("/index.html") @Title("Home Page")
 public class HomePage extends WebPage {
-    @Css("#login-form") public static LoginForm loginForm;
-    @Css("img#user-icon") public static Icon userIcon;
-    @Css("#user-name") public static Label fullName;
-    @Css(".navbar-nav.m-l8 > li") public static Menu header;
+    @Css("#login-form")
+    public static LoginForm loginForm;
+
+    @Css("img#user-icon")
+    public static Icon userIcon;
+
+    @Css("#user-name")
+    public static Label fullName;
+
+    @Css(".navbar-nav.m-l8 > li")
+    public static Menu header;
 
     public void checkLoggedin(User user) {
         fullName.shouldBe().text(Matchers.equalTo(user.getFullName()));
