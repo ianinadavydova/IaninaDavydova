@@ -1,4 +1,4 @@
-package hw7hw8;
+package hw7hw8.pages;
 
 import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.Title;
@@ -10,6 +10,7 @@ import com.epam.jdi.light.ui.html.complex.Menu;
 import hw7hw8.entities.User;
 import hw7hw8.forms.LoginForm;
 import org.hamcrest.Matchers;
+import org.openqa.selenium.WebElement;
 
 @Url("/index.html") @Title("Home Page")
 public class HomePage extends WebPage {
@@ -24,6 +25,9 @@ public class HomePage extends WebPage {
 
     @Css(".navbar-nav.m-l8 > li")
     public static Menu header;
+
+    @Css(".fa-sign-out")
+    public static WebElement logout;
 
     public void checkLoggedin(User user) {
         fullName.shouldBe().text(Matchers.equalTo(user.getFullName()));

@@ -8,9 +8,9 @@ import com.epam.jdi.light.elements.pageobjects.annotations.simple.UI;
 import com.epam.jdi.light.ui.html.base.HtmlRadioGroup;
 import com.epam.jdi.light.ui.html.common.Button;
 import com.epam.jdi.light.ui.html.complex.*;
-import hw7hw8.entities.MetalsColorsEntity;
+import hw7hw8.entities.MetalsColors;
 
-public class MetalsColorsForm extends Form<MetalsColorsEntity> {
+public class MetalsColorsForm extends Form<MetalsColors> {
 
     @Css("#odds-selector p")
     RadioButtons summaryOdd;
@@ -43,10 +43,10 @@ public class MetalsColorsForm extends Form<MetalsColorsEntity> {
     Button submit;
 
     @Override
-    public void submit(MetalsColorsEntity entity) {
-        entity.elements.forEach(option -> elementCheckBoxes.select(option.getName()));
+    public void submit(MetalsColors entity) {
+        entity.elements.forEach(option -> elementCheckBoxes.select(option));
         vegetablesDropdown.select(vegetablesDropdown.getSelected());
-        entity.vegetables.forEach(option -> vegetablesDropdown.select(option.getName()));
+        entity.vegetables.forEach(option -> vegetablesDropdown.select(option));
         super.submit(entity);
     }
 }
