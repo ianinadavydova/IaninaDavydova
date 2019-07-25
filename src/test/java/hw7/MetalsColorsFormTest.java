@@ -8,6 +8,7 @@ import hw7hw8.entities.User;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -20,7 +21,7 @@ import static hw7hw8.JdiTestSite.metalsColorsPage;
 import static hw7hw8.pages.HomePage.*;
 import static hw7hw8.pages.MetalsColorsPage.metalsColorsForm;
 
-public class MetalColorsFormTest {
+public class MetalsColorsFormTest {
 
     @BeforeClass(alwaysRun = true)
     public static void setUp() {
@@ -45,6 +46,11 @@ public class MetalColorsFormTest {
         metalsColorsForm.submit(formData);
         // TODO - FIXED assertion
         Assert.assertEquals(metalsColorsPage.getLog(), expectedLog);
+    }
+
+    @AfterMethod
+    public void logout() {
+        homePage.logout();
     }
 
     @AfterClass

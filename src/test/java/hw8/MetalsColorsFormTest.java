@@ -7,10 +7,7 @@ import hw7hw8.entities.MetalsColors;
 import hw7hw8.entities.User;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.List;
 
@@ -32,7 +29,7 @@ public class MetalsColorsFormTest {
         initElements(JdiTestSite.class);
     }
 
-    // TODO
+    // TODO - FIXED, hw7hw8 test separated
     @Test(dataProviderClass = DataProvider.class, dataProvider = "dataSet")
     public void test(User user, MetalsColors formData, List<String> expectedLog) {
         homePage.open();
@@ -48,8 +45,7 @@ public class MetalsColorsFormTest {
 
     @AfterMethod
     public void logout() {
-        userIcon.click();
-        logout.click();
+        homePage.logout();
     }
 
     @AfterClass

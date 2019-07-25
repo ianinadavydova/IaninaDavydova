@@ -32,4 +32,9 @@ public class HomePage extends WebPage {
     public void checkLoggedin(User user) {
         fullName.shouldBe().text(Matchers.equalTo(user.getFullName()));
     }
+
+    public void logout() {
+        userIcon.click();
+        logout.click();
+    }
 }

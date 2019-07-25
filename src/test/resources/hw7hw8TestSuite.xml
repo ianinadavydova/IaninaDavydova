@@ -1,8 +1,0 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="hw7hw8TestSuite">
-    <test name="hw7-hw8-tests">
-        <classes>
-            <class name="hw7hw8.MetalColorsFormTest"/>
-        </classes>
-    </test>
-</suite>

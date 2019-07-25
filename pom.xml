@@ -92,12 +92,21 @@
             </properties>
         </profile>
         <profile>
-            <id>hw7-hw8-tests</id>
+            <id>hw7-tests</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw7TestSuite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw8-tests</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>src/test/resources/hw7hw8TestSuite.xml</suite.xml>
+                <suite.xml>src/test/resources/hw8TestSuite.xml</suite.xml>
             </properties>
         </profile>
     </profiles>

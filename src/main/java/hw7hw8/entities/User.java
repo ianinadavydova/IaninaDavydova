@@ -2,8 +2,6 @@ package hw7hw8.entities;
 
 import com.epam.jdi.tools.DataClass;
 import lombok.Getter;
-import org.testng.Assert;
-
 import java.io.IOException;
 import java.util.Properties;
 
