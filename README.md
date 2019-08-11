@@ -1,2 +1,2 @@
 # IaninaDavydova
-HomeWork exercises
+HomeWork
